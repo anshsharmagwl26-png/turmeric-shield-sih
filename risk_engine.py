@@ -249,17 +249,17 @@ def assess_risk(data: CropRiskInput) -> dict:
     # 5. Optional visual evidence
     # ------------------------------------------------------------------
     # This is a structured prototype input only.
-    if data.visual_assessment == "supportive":
-        score += 2
-        evidence.append(
-            _evidence(
-                "Visual",
-                "Supporting symptom assessment",
-                2,
-                "A supporting visual assessment adds additional evidence. "
-                "This value is not produced by an integrated image model yet.",
-            )
+  if data.visual_assessment == "supportive":
+    evidence.append(
+        _evidence(
+            "Visual",
+            "Supporting symptom assessment",
+            0,
+            "A manual visual observation is recorded as supporting context "
+            "but does not change the numerical score in the current prototype. "
+            "An integrated image model is a future stage.",
         )
+    )
     elif data.visual_assessment == "uncertain":
         missing.append("Visual assessment is uncertain")
         evidence.append(
@@ -319,22 +319,20 @@ def assess_risk(data: CropRiskInput) -> dict:
             "Continue monitoring and update the assessment when new "
             "observations arrive."
         )
-
-    # This describes input completeness, not model accuracy.
-    if len(missing) == 0:
-        evidence_strength = "STRONGER-CONTEXT"
-    elif len(missing) <= 2:
-        evidence_strength = "PARTIAL-CONTEXT"
-    else:
-        evidence_strength = "LIMITED-CONTEXT"
-
+ # This describes input completeness, not model accuracy.
+if len(missing) == 0:
+    context_completeness = "COMPLETE"
+elif len(missing) <= 2:
+    context_completeness = "PARTIAL"
+else:
+    context_completeness = "LIMITED"
     return {
         "project": "Turmeric Shield",
         "crop": data.crop_name,
         "farmer": data.farmer_name,
         "risk_priority": priority,
         "priority_score": score,
-        "evidence_strength": evidence_strength,
+       "context_completeness": context_completeness,
         "action": action,
         "next_step": next_step,
         "evidence": [item.model_dump() for item in evidence],
