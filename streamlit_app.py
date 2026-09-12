@@ -70,12 +70,13 @@ with st.sidebar:
         index=1,
     )
 
-    st.subheader("Optional Visual Evidence")
-    st.caption(
-        "Prototype representation only. No image model is executed here yet."
-    )
-    visual = st.selectbox(
-        "Supporting visual assessment",
+  st.subheader("Manual Visual Evidence — Prototype")
+st.caption(
+    "Manual observation only. No image model is executed here yet; "
+    "actual multimodal inference is a future integration."
+)
+visual = st.selectbox(
+    "Manual visual observation",
         [
             "not_available",
             "supportive",
@@ -124,7 +125,7 @@ if run:
         c1, c2, c3 = st.columns(3)
         c1.metric("Risk Priority", result["risk_priority"])
         c2.metric("Prototype Score", result["priority_score"])
-        c3.metric("Evidence Strength", result["evidence_strength"])
+      c3.metric("Context Completeness", result["context_completeness"])
 
         st.subheader("Recommended Action")
         st.success(result["action"])
