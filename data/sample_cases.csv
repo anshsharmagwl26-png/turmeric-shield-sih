@@ -1,0 +1,5 @@
+timestamp,location,crop,nearby_cases,case_trend,soil_moisture,drainage,recent_rainfall_mm
+2026-09-01,Hingoli,turmeric,0,stable,54,good,8
+2026-09-04,Hingoli,turmeric,1,stable,68,moderate,24
+2026-09-07,Hingoli,turmeric,2,increasing,77,moderate,42
+2026-09-10,Hingoli,turmeric,3,increasing,84,poor,63
