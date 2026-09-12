@@ -87,13 +87,14 @@ Those are implementation/scale-up stages rather than features being falsely repr
 | Temporal | recent rainfall, rainfall trend, moisture trend | contributes to prototype score |
 | Crop context | crop stage, variety | recorded as context; **not yet weighted** |
 | Spatial | nearby cases + local trend | contributes to prototype score |
-| Visual | structured supporting assessment field | can contribute as a prototype input; **not produced by an image model** |
+| Visual | manual structured observation | recorded as supporting context; not produced by an image model and not weighted yet |
 
 ### Important distinction
 
 **Weather is currently a structured input, not a live API feed.**
 
 **Visual assessment is currently a structured supporting input, not a running multimodal AI model.**
+**Temperature is currently captured as contextual data but is not weighted in the prototype score.**
 
 This keeps the repository aligned with the actual implementation.
 
@@ -117,7 +118,7 @@ Illustrative examples:
 - nearby cases ≥ 3 → +3
 - nearby cases 1–2 → +2
 - increasing nearby-case trend → +1
-- supportive visual assessment input → +2
+- - visual observation → recorded as supporting context; no score contribution in the current prototype
 
 Current priority mapping:
 
@@ -145,7 +146,7 @@ For each assessment, the API returns:
 
 - prototype priority score
 - HIGH / MODERATE / LOW / UNCERTAIN
-- evidence strength
+- - context completeness
 - each contributing signal
 - contribution of each signal
 - interpretation of that signal
@@ -361,7 +362,7 @@ TurmericShield/
 - Prototype thresholds and weights are illustrative.
 - No expert-confirmed local disease dataset is included yet.
 - Weather is structured input rather than a live weather API.
-- Visual evidence is a structured supporting input rather than running image inference.
+- Visual evidence is a manual structured observation rather than running image inference, and it is not currently weighted.
 - IoT is a future field-expansion component.
 - Crop stage and variety are recorded but not yet used as numerical weighting factors.
 - No validated disease-detection accuracy figure is claimed.
