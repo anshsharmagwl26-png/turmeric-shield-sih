@@ -1,0 +1,16 @@
+{
+  "farmer_name": "Demo Field",
+  "crop_name": "turmeric",
+  "soil_moisture_percentage": 82,
+  "drainage": "poor",
+  "temperature_c": 28,
+  "humidity_percentage": 88,
+  "recent_rainfall_mm": 60,
+  "rainfall_trend": "increasing",
+  "moisture_trend": "increasing",
+  "crop_stage": "rhizome development",
+  "variety": "Demo variety",
+  "nearby_cases_last_14_days": 3,
+  "nearby_case_trend": "increasing",
+  "visual_assessment": "not_available"
+}
