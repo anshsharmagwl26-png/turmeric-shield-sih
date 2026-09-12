@@ -77,7 +77,7 @@ def test_crop_context_is_recorded_not_weighted():
     assert all(item["contribution"] == 0 for item in crop_items)
 
 
-def test_visual_assessment_is_supporting_input():
+def test_visual_assessment_is_recorded_without_current_score_change():
     without_visual = assess_risk(
         base_input(visual_assessment="not_available")
     )
@@ -85,7 +85,8 @@ def test_visual_assessment_is_supporting_input():
         base_input(visual_assessment="supportive")
     )
 
-    assert (
-        with_visual["priority_score"]
-        == without_visual["priority_score"] + 2
+    assert with_visual["priority_score"] == without_visual["priority_score"]
+    assert any(
+        item["category"] == "Visual"
+        for item in with_visual["evidence"]
     )
