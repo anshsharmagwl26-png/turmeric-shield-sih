@@ -5,7 +5,7 @@
 - FastAPI + Python transparent rule engine accepts **structured** field, weather-context, crop-context and local-history inputs.
 - The current engine produces an explainable **Risk Priority**, contributing evidence, recommended action and next step.
 - Streamlit demonstrates the farmer/field-worker workflow.
-- Optional visual evidence is represented as a supporting structured input; **an image model is not executed in the current prototype**.
+- Manual visual observation is represented as supporting structured context; an image model is not executed and the observation is not weighted in the current prototype.**.
 
 ## 2. Turmeric Shield Risk-Fusion Layer
 
